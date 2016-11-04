@@ -9,6 +9,7 @@
 <?php
 echo "Работа с функциями 1" . PHP_EOL;
 echo "Работа с функциями 2" . PHP_EOL;
+echo "Работа с функциями 2" . PHP_EOL;
 ?>
 </body>
 </html>
