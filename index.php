@@ -235,6 +235,42 @@ echo $s4;
 
 ?>
 
+<h3>Задание 8 ============================================</h3>
+<?php
+function smile()
+{
+    return chr(58).chr(41);
+}
+
+function rx_packet($rx_str)
+{
+    echo $rx_str . "<br>";
+    if (is_string($rx_str)) {
+        if (strpos($rx_str, ":)") !== false) {
+            return smile();
+        }
+
+        preg_match("/(packets):([0-9]*)/", $rx_str, $matches);
+
+        if ($matches[2] > 1000) {
+//            print_r($matches);
+            echo "Сеть естьь<br>";
+        } else {
+            echo "Сети нет";
+        }
+
+    } else {
+        return "Введите аргумент строку";
+    }
+
+}
+
+//$rx_str = "RX packets:950 errors:0 dropped:0 overruns:0 frame:0.";
+$rx_str = "RX packets:950381 errors:0 dropped:0 overruns:0 frame:0.";
+//$rx_str = "kldfjgbl adlfkjlsj";
+
+echo rx_packet($rx_str);
+?>
 
 <h3>Задание 9 ============================================</h3>
 <?php
