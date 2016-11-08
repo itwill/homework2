@@ -99,22 +99,71 @@ function f3_calc()
 {
     if (func_num_args() > 2) {
 //        echo "Условие выполнено!";
-        $act  = func_get_arg(0); // первый аргумент - строка
+        $act = func_get_arg(0); // первый аргумент - строка
+//        var_dump($act);
         if (is_string($act)) {
-//            echo "строка";
-            $kol_arg = func_get_args(); // получаем массив аргументоа
-            $kol_arg_mas = [];          //
+            $mas_arg = func_get_args(); // получаем массив аргументов
+//            var_dump($mas_arg);
 
-            // проверяем числовые аргументы в цикле и сохраняем числа в массив, не учитываем первый аргумент строку
-            for ($i = 1; $i < count($kol_arg); $i++) {
-                if (is_numeric($kol_arg[$i])) {
-                    // записываем аргумент в массив
-                    $kol_arg_mas = $kol_arg[$i];
+            $args_func = [];
+
+//          проверяем числовые аргументы в цикле и сохраняем числа в массив, не учитываем первый аргумент строку
+            for ($i = 1; $i < count($mas_arg); $i++) {
+                if (is_numeric($mas_arg[$i])) {
+                    // записываем аргументы в массив
+                    $args_func[] = $mas_arg[$i];
+//                    var_dump($args_func);
                 } else {
                     return "Аргументы должны быть числами";
                 }
             }
 
+// выбираем первый элемент массива, от которго будем производить вычисления и исключаем его из цикла перебора элементов
+            $result = $args_func[0]; // начинаем операции с первого аргумента
+//            var_dump($result);
+// выбираем операцию с числами
+            switch ($act) {
+                case "+":
+//                echo "Результат сложения чисел:<br>";
+                    for ($i = 1; $i < count($args_func); $i++) {
+//                        echo $args_func[$i] . "<br>";
+                        $result += $args_func[$i];
+                    }
+                    break;
+
+                case "-":
+//                echo "Результат вычитания чисел:<br>";
+                    for ($i = 1; $i < count($args_func); $i++) {
+//                        echo $args_func[$i] . "<br>";
+                        $result -= $args_func[$i];
+                    }
+                    break;
+
+                case "*":
+//                echo "Результат умножения чисел:<br>";
+                    for ($i = 1; $i < count($args_func); $i++) {
+//                        echo $args_func[$i] . "<br>";
+                        $result *= $args_func[$i] . "<br>";
+                    }
+                    break;
+
+                case "/":
+//                echo "Результат деления чисел:<br>";
+                    if (in_array(0, $args_func)) {
+                        return "В массиве присутствует ноль. На ноль делить нельзя!";
+                    }
+                    for ($i = 1; $i < count($args_func); $i++) {
+//                        echo $args_func[$i] . "<br>";
+                        $result /= $args_func[$i] . "<br>";
+                    }
+                    break;
+
+                default:
+                    return "Функция работает с простыми арифметическими операциями";
+            }
+
+            // результат
+            echo("Результат ($act) чисел: " . $result . "<br>");
 
 
         } else {
@@ -122,12 +171,12 @@ function f3_calc()
         }
 
     } else {
-        return "Условие не выполнено!";
+        return "Параметров должно быть не меньше 3";
     }
 
 }
 
-echo f3_calc("+", 9, 6, 7);
+echo f3_calc("/", 10, 5, 1);
 ?>
 
 <h3>Задание 4 ============================================</h3>
@@ -165,6 +214,7 @@ function tableNumber($x, $y)
 
 echo tableNumber(2, 5);
 ?>
+
 
 <h3>Задание 6 ============================================</h3>
 <?php
