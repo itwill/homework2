@@ -237,11 +237,12 @@ function palindrom($st)
 function res_palindrom($st)
 {
     if (palindrom($st)) {
-        echo "Палиндром";
+        return "Палиндром";
     } else {
-        echo "Не Палиндром";
+        return "Не Палиндром";
+    }
 }
-}
+
 echo res_palindrom("abj Jba");
 echo "<br>";
 
@@ -270,7 +271,7 @@ echo $s4;
 <?php
 function smile()
 {
-    return chr(58).chr(41);
+    return chr(58) . chr(41);
 }
 
 function rx_packet($rx_str)
