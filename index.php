@@ -220,9 +220,12 @@ echo tableNumber(2, 5);
 function palindrom($st)
 {
     if (is_string($st)) {
-
+//
         $st = str_replace(" ", "", strtolower($st));
-        $strrev = strrev($st);
+        preg_match_all('/./us', $st, $ar);
+
+        $strrev = join('', array_reverse($ar[0]));
+
         if ($st === $strrev) {
             return true;
         } else {
@@ -245,6 +248,7 @@ function res_palindrom($st)
 
 echo res_palindrom("abj Jba");
 echo "<br>";
+echo res_palindrom("рот Ор");
 
 ?>
 
