@@ -215,6 +215,37 @@ function tableNumber($x, $y)
 echo tableNumber(2, 5);
 ?>
 
+<h3>Задание 5 ============================================</h3>
+<?php
+function palindrom($st)
+{
+    if (is_string($st)) {
+
+        $st = str_replace(" ", "", strtolower($st));
+        $strrev = strrev($st);
+        if ($st === $strrev) {
+            return true;
+        } else {
+            return false;
+        }
+
+    } else {
+        return false;
+    }
+}
+
+function res_palindrom($st)
+{
+    if (palindrom($st)) {
+        echo "Палиндром";
+    } else {
+        echo "Не Палиндром";
+}
+}
+echo res_palindrom("abj Jba");
+echo "<br>";
+
+?>
 
 <h3>Задание 6 ============================================</h3>
 <?php
