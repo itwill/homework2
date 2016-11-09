@@ -9,18 +9,24 @@
 <h3>Задание 1 ============================================</h3>
 <?php
 // Не соответствует заданию
-function f1(array $str, $ret = false)
+
+function f1(array $str, $par2 = 5)  // устанавл. второй необязательный параметр
 {
-    if (!$ret) {
+    if ($par2 === true) {   // проверяем равенство с типом
+        return implode(" ", $str);
+//        var_dump(func_get_arg(1));
+    } else {
         foreach ($str as $val) {
-            echo("<p>" . $val . "</p>");
+            echo ("<p>" . $val . "</p>");
         }
     }
-    return implode(" ", $str);
 }
 
-echo f1(["Lorem ipsum", "consectetur elit", "cupiditate ea harum", "Atque eligendi"]);
+//echo f1(["Lorem ipsum", "consectetur elit", "cupiditate ea harum", "Atque eligendi"]);
+//echo f1(["Lorem ipsum", "consectetur elit", "cupiditate ea harum", "Atque eligendi"], "true");
 echo f1(["Lorem ipsum", "consectetur elit", "cupiditate ea harum", "Atque eligendi"], true);
+//echo f1(["Lorem ipsum", "consectetur elit", "cupiditate ea harum", "Atque eligendi"], 1);
+
 ?>
 
 <h3>Задание 2 ============================================</h3>
