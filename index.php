@@ -296,20 +296,20 @@ function smile()
 
 function rx_packet($rx_str)
 {
-    echo $rx_str . "<br>";
+    echo "Исходная строка - " . $rx_str . "<br>";
     if (is_string($rx_str)) {
-        // Здесь ли должен быть смайл?
-        if (strpos($rx_str, ":)") !== false) {
-            return smile();
-        }
 
         preg_match("/(packets):([0-9]*)/", $rx_str, $matches);
 
         if ($matches[2] > 1000) {
 //            print_r($matches);
-            echo "Сеть естьь<br>";
+
+            if (strpos($rx_str, ":)") !== false) {
+                return smile();
+            }
+            return "Сеть естьь<br>";
         } else {
-            echo "Сети нет";
+            return "Сети нет";
         }
 
     } else {
